@@ -1,8 +1,8 @@
-import sys
 import pygame
 
 from Game.settings import Settings
 from Game.ship import Ship
+import Game.game_functions as gf
 
 def run_game():
     # Initialize game and create a screen object.
@@ -18,17 +18,10 @@ def run_game():
     # start main loop
     while True:
         # keyboard and mouse events
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
+        gf.check_events()
 
-        # redraw the screen during each pass through the loop
-        screen.fill(ai_settings.bg_color)
-        ship.blitme()
-        # make the most recently drawn screen visible
-        pygame.display.flip()
+        gf.update_screen(ai_settings, screen, ship)
 
 
 run_game()
 
-# cloned to labtop
